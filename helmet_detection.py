@@ -86,7 +86,9 @@ class helmet_detection():
             self.drawPred(frame, confidences[i], left, top, left + width, top + height)
             #increase test counter till the loop end then print...
 
-    def get_detection(self, frame, copy_frame):
+    def get_detection(self, frame, copy_frame=None):
+        if copy_frame is None:
+            copy_frame = frame
 
         # Create a 4D blob from a frame.
         blob = cv.dnn.blobFromImage(frame, 1 / 255, (frame.shape[0], frame.shape[1]), [0, 0, 0], 1, crop=False)
@@ -107,7 +109,7 @@ class helmet_detection():
         label = 'Inference time: %.2f ms' % (t * 1000.0 / cv.getTickFrequency())
         cv.putText(copy_frame, label, (0, 15), cv.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255))
 
-        return copy_frame
+        return copy_frame, outs
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -126,7 +128,7 @@ if __name__ == '__main__':
         # Get frame from Camera module
         frame = cam.get_frame()
         frame = cv.resize(frame, dsize=(640, 480), interpolation=cv.INTER_AREA)
-        frame = helmet_detection.get_detection(frame=frame, copy_frame=frame)
+        frame, outs = helmet_detection.get_detection(frame=frame, copy_frame=frame)
 
         # show the frame
         cv.imshow(winName, frame)

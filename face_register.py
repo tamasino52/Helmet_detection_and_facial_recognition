@@ -6,7 +6,7 @@ import cv2
 import camera
 import face_recog
 import numpy as np
-
+import DBmanager
 # Define args property
 parser = argparse.ArgumentParser()
 parser.add_argument('name', help='Input face name')
@@ -43,6 +43,10 @@ if __name__ == "__main__":
         print('Folder name exception :: already registered face')
     # Path adequacy check
     assert os.path.exists(face_path)
+
+    # Set DB
+    DBmanager = DBmanager.DBmanager("log.db")
+    DBmanager.ShowAllWorker()
 
     # Set camera module
     cam = camera.VideoCamera(camera_num)
@@ -92,6 +96,7 @@ if __name__ == "__main__":
                 cv2.imwrite(face_path + '/%s%i.jpg' % (face_name, count), copy_frame)
                 print('Registration Complete :: ',  '%s%i.jpg' % (face_name, count))
                 count += 1
+                DBmanager.InsertWorker(random.randrange(10000000, 99999999), face_name)
 
     # do a bit of cleanup
     cv2.destroyAllWindows()
