@@ -7,11 +7,14 @@ import camera
 import face_recog
 import numpy as np
 import DBmanager
+import random
 # Define args property
 parser = argparse.ArgumentParser()
 parser.add_argument('name', help='Input face name')
 parser.add_argument('-s', '--save', default='./img/knowns', help='Path to save face')
 parser.add_argument('-c', '--camera', default=0, type=int, help='Camera number')
+parser.add_argument('-i', '--id', default=0, type=int, help='ID number')
+
 args = parser.parse_args()
 
 # Main Code
@@ -96,7 +99,18 @@ if __name__ == "__main__":
                 cv2.imwrite(face_path + '/%s%i.jpg' % (face_name, count), copy_frame)
                 print('Registration Complete :: ',  '%s%i.jpg' % (face_name, count))
                 count += 1
-                DBmanager.InsertWorker(random.randrange(10000000, 99999999), face_name)
+                DBmanager.InsertWorker(args.id, face_name)
+                DBmanager.ShowAllWorker()
+        elif key == ord("d"):
+            count -= 1
+            if count < 1:
+                DBmanager.DeleteWorker(args.id)
+                DBmanager.ShowAllWorker()
+                print('Remove from DB')
+            else:
+                os.remove(face_path + '/%s%i.jpg' % (face_name, count))
+                print('Remove Complete :: ',  '%s%i.jpg' % (face_name, count))
+
 
     # do a bit of cleanup
     cv2.destroyAllWindows()
