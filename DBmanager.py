@@ -128,7 +128,7 @@ if __name__ == "__main__":
     print("UpdateRecent ID : Update DATA::Worker(DATE) to Now")
     print("ResetAllRecent :  Update All DATA::Worker(DATE) to Now")
     print("AddWarnings ID : Add 1 Points in DATA::Worker(WARNINGS) from DB")
-    print("SetWarnings ID VALUE : Initialize Value of DATA::Worker(WARNINGS) to COUNT")
+    print("SetWarnings ID VALUE : Initialize Value of DATA::Worker(WARNINGS) to COUNT")he
     print("SetAllWarnings VALUE : Initialize Value of All DATA::Worker(WARNINGS) to COUNT")
     print("help : Show <DB MANAGER COMMAND LIST> Again")
     print("exit : Shutdown Program")
