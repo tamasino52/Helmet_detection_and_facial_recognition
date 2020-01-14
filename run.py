@@ -7,7 +7,6 @@ import camera
 import face_recog
 import numpy as np
 import DBmanager
-import threading
 
 
 def display_result(frame, face_outs):
