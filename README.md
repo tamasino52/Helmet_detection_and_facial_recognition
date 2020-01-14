@@ -1,6 +1,14 @@
 # Helmet Detection and Facial Recognition
 A system that checks whether workers wear safety helmets through CCTVs at construction sites and reflects them to DB in real time.
 
+# Requirements
+python=3.6
+
+```
+pip install face_recognition
+pip install opencv-python
+```
+
 # Face Registering
 If you are not registered in database, system will ignore detection of your face.
 So, you need to register your face before execute run.py
