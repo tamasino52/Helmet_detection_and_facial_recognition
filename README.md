@@ -1,5 +1,6 @@
 # Helmet Detection and Facial Recognition
-[![HitCount](http://hits.dwyl.com/tamasino52/Helmet_detection_and_facial_recognition.svg)](http://hits.dwyl.com/tamasino52/Helmet_detection_and_facial_recognition)<br>
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Ftamasino52%2FHelmet_detection_and_facial_recognition)](https://hits.seeyoufarm.com)
+
 A system that checks whether workers wear safety helmets through CCTVs at construction sites and reflects them to DB in real time.
 
 # Requirements
